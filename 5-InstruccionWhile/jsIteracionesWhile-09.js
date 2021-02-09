@@ -4,38 +4,41 @@ mostrar el número máximo y el número mínimo ingresado.*/
 function mostrar()
 {
 
-   let numeroIngresado;
-   let maximo;
-   let minimo;
-   let ultimoMinimo;
-   let i;
+  let numero;
+  let maximo;
+  let minimo;
+  let salir;
+  let unicaVez;
 
-   i=0;
-   maximo=0;
-   minimo=0;
+  unicaVez=0;
 
-   while (i<4) {
+  do {
 
-	numeroIngresado=prompt("Ingrese un numero:","");
-	numeroIngresado=parseInt(numeroIngresado);
+   numero=prompt("Ingrese un número:","");
+   numero=parseInt(numero);
 
-	if(numeroIngresado<ultimoMinimo){
+   if(unicaVez==0){
 
-     ultimoMinimo=numeroIngresado;
+      maximo=numero;
+      minimo=numero;
+      unicaVez++;
+   }
 
-	}else if(numeroIngresado>maximo){
+   if(numero>maximo){
 
-		maximo=numeroIngresado;
+      maximo=numero;
 
-	}else if (){
+   }else if(numero<minimo){
 
-		minimo=numeroIngresado;
-	}
-	ultimoMinimo=minimo;
+      minimo=numero;
+   }
 
-	
-	i++;   
-}
-   alert("El maximo es: "+maximo+" y el minimo es: "+minimo);
+   salir=prompt("Ingrese si para salir:");
+   //cuando la condicion sea verdadera termina el bucle
+  } while (salir!="si");
+
+  document.getElementById("txtIdMaximo").value=maximo;
+  document.getElementById("txtIdMinimo").value=minimo;
+
 
 }//FIN DE LA FUNCIÓN
