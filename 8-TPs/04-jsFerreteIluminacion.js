@@ -23,155 +23,184 @@ function CalcularPrecio ()
     cantidad=parseInt(cantidad);
     lampara=document.getElementById("Marca").value;
 
-    if (cantidad>=6) {
+    if (cantidad>5) 
+    {
 
-        switch (lampara) {
-            case "ArgentinaLuz":
-            case "FelipeLamparas":
-            case "JeLuz":
-            case "HazIluminacion":
-            case "Osram":
-                precioCantidad= precio * cantidad;
-                descuento=precioCantidad*50/100;
-                precioFinal=precioCantidad-descuento;
+        precioCantidad= precio * cantidad;
+        descuento=precioCantidad*50/100;
+        precioFinal=precioCantidad-descuento;
 
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto
+        if (precioFinal>119) 
+        {
+            impuesto=precioFinal*10/100;
+            precioFinal=precioFinal+impuesto
+ 
+            alert("IIBB Usted pago $"+impuesto); 
 
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break; 
-                  
+        } 
+           
+    } 
+    else
+    {
+        if (cantidad==5)
+        {
+
+            switch (lampara)
+            {
+    
+                case "ArgentinaLuz":
+                    precioCantidad=cantidad*precio;
+                    descuento=precioCantidad*40/100;
+                    precioFinal=precioCantidad-descuento;
+    
+                    if (precioFinal>119) 
+                    {
+                        impuesto=precioFinal*10/100;
+                        precioFinal=precioFinal+impuesto;
+     
+                        alert("IIBB Usted pago $"+impuesto);  
+                    } 
+                   
+                    break; 
+                default:
+                    precioCantidad=cantidad*precio;
+                    descuento=precioCantidad*30/100;
+                    precioFinal=precioCantidad-descuento;
+    
+                    if (precioFinal>119) 
+                    {
+                        impuesto=precioFinal*10/100;
+                        precioFinal=precioFinal+impuesto;
+    
+                        //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                        alert("IIBB Usted pago $"+impuesto);  
+                    } 
+                    else
+                    {
+                        //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                    }
+                break;
+            }
+            
         }
+        else
+        {
+            if (cantidad==4) 
+            {
+
+                switch (lampara)
+                {
+                    case "ArgentinaLuz":
+                    case "FelipeLamparas":
+                        precioCantidad=precio*cantidad;
+                        descuento=precioCantidad*25/100;
+                        precioFinal=precioCantidad-descuento;
         
-    } else if (cantidad==5){
-
-        switch (lampara) {
-
-            case "ArgentinaLuz":
-                precioCantidad=cantidad*precio;
-                descuento=precioCantidad*40/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break; 
-            default:
-                precioCantidad=cantidad*precio;
-                descuento=precioCantidad*30/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break;
-        }
+                        if (precioFinal>119)
+                        {
+                            impuesto=precioFinal*10/100;
+                            precioFinal=precioFinal+impuesto;
         
-    } else if (cantidad==4) {
-
-        switch (lampara) {
-            case "ArgentinaLuz":
-            case "FelipeLamparas":
-                precioCantidad=precio*cantidad;
-                descuento=precioCantidad*25/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-
-                break;
-            default:
-                precioCantidad=precio*cantidad;
-                descuento=precioCantidad*20/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-
-                break;
-        }
-    } else if (cantidad==3){
-
-        switch (lampara) {
-            case "ArgentinaLuz":
-                precioCantidad=precio*cantidad;
-                descuento=precioCantidad*15/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break;
-            case "FelipeLamparas":
-                precioCantidad=precio*cantidad;
-                descuento=precioCantidad*10/100;
-                precioFinal=precioCantidad-descuento;
-                
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break;
-            default:
-                precioCantidad=precio*cantidad;
-                descuento=precioCantidad*5/100;
-                precioFinal=precioCantidad-descuento;
-
-                if (precioFinal>=120) {
-                    impuesto=precioFinal*10/100;
-                    precioFinal=precioFinal+impuesto;
-
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal; 
-                    alert("IIBB Usted pago $"+impuesto);  
-                } else {
-                    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-                }
-                break;
-        }
+                            //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                            alert("IIBB Usted pago $"+impuesto);  
+                        } 
+                        else 
+                        {
+                            //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                        }
         
-    }
+                        break;
+                    default:
+                        precioCantidad=precio*cantidad;
+                        descuento=precioCantidad*20/100;
+                        precioFinal=precioCantidad-descuento;
+        
+                        if (precioFinal>119)
+                        {
+                            impuesto=precioFinal*10/100;
+                            precioFinal=precioFinal+impuesto;
+        
+                            //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                            alert("IIBB Usted pago $"+impuesto);  
+                        } 
+                        else
+                        {
+                            //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                        }
+        
+                    break;
+                }
+            } 
+            else
+            {
+                if (cantidad==3)
+                {
+        
+                    switch (lampara)
+                    {
+                        case "ArgentinaLuz":
+                            precioCantidad=precio*cantidad;
+                            descuento=precioCantidad*15/100;
+                            precioFinal=precioCantidad-descuento;
+            
+                            if (precioFinal>119)
+                            {
+                                impuesto=precioFinal*10/100;
+                                precioFinal=precioFinal+impuesto;
+            
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                                alert("IIBB Usted pago $"+impuesto);  
+                            } 
+                            else 
+                            {
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                            }
+                        break;
+                        case "FelipeLamparas":
+                            precioCantidad=precio*cantidad;
+                            descuento=precioCantidad*10/100;
+                            precioFinal=precioCantidad-descuento;
+                            
+                            if (precioFinal>119)
+                            {
+                                impuesto=precioFinal*10/100;
+                                precioFinal=precioFinal+impuesto;
+            
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                                alert("IIBB Usted pago $"+impuesto);  
+                            } 
+                            else 
+                            {
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                            }
+                        break;
+                        default:
+                            precioCantidad=precio*cantidad;
+                            descuento=precioCantidad*5/100;
+                            precioFinal=precioCantidad-descuento;
+            
+                            if (precioFinal>119)
+                            {
+                                impuesto=precioFinal*10/100;
+                                precioFinal=precioFinal+impuesto;
+            
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal; 
+                                alert("IIBB Usted pago $"+impuesto);  
+                            } 
+                            else 
+                            {
+                                //document.getElementById("txtIdprecioDescuento").value=precioFinal;
+                            }
+                        break;
+                    }
+                    
+                }
+            } 
+           
+        } 
+        
+    } 
+
+    document.getElementById("txtIdprecioDescuento").value=precioFinal;
    
-
 }

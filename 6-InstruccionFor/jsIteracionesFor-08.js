@@ -1,28 +1,41 @@
-function mostrar(){
+function mostrar()
+{
 
-let numero;
-let i;
-let cantidadPrimos;
+  let numero;
+  let i;
+  let cantidadDivisores;
+  let mensaje;
 
-cantidadPrimos=0;
+  cantidadDivisores=0;
 
-numero=prompt("Ingrese un número:");
-numero=parseInt(numero);
+  numero=prompt("Ingrese un número:");
+  numero=parseInt(numero);
 
-  for (i=1;i<=numero;i++){
+  for (i=2;i<numero;i++)
+  {
 
-	if (numero%i!=0 ) {
+	  if (numero%i==0)//si el resto del numero dividido i es cero entonces no es primo
+	  {
 
-		if(numero%2!=0){
+    cantidadDivisores=cantidadDivisores+1;
 
-			document.write(i+" es primo </br>");
-			cantidadPrimos=cantidadPrimos+1;
-		}
-			
-	}  
+	  }
+	
+  }
+
+  if (cantidadDivisores!=0 || numero==1)
+  {
+	  
+	  mensaje=numero+" no es primo";
+  }
+  else
+  {
+    mensaje=numero+" es primo";
 
   }
-  document.write("En total hay "+cantidadPrimos+" números primos");
+
+  alert(mensaje);
+  
 
 
 }

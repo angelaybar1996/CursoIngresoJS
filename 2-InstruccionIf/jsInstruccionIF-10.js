@@ -4,23 +4,35 @@ function mostrar()
 	let notaRandom;
 	let maximo;
 	let minimo;
+	let mensaje;
 
 	maximo=10;
 	minimo=1;
 	nota=Math.random()*(maximo-minimo)+minimo;
 	notaRandom=Math.round(nota);
 
-	if (notaRandom==9 ||notaRandom==10) {
+	if (notaRandom>8)
+	{
 
-		alert("EXCELENTE");
+		mensaje="EXCELENTE te sacaste un "+notaRandom;
 		
-	} else if(notaRandom>=4) {
+	} 
+	else 
+	{
+		if(notaRandom>3) 
+		{
 
-		alert("APROBÓ");
-		
-	}else{
-
-		alert("Vamos,la proxima se puede");
+			mensaje="APROBÓ te sacaste un "+notaRandom;
+			
+		}
+		else
+		{
+	
+			mensaje="Vamos,la proxima se puede";
+		}
 	}
+
+	alert(mensaje);
+	
 
 }//FIN DE LA FUNCIÓN

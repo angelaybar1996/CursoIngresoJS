@@ -3,9 +3,9 @@ function mostrar()
 
 let numero;
 let i;
-let cantiadadDivisores;
+let cantidadDivisores;
 
-cantiadadDivisores=0;
+cantidadDivisores=0;
 
 numero=prompt("Ingrese un numero:");
 numero=parseInt(numero);
@@ -15,7 +15,7 @@ for (i = 1; i <= numero; i++) {
 	if (numero%i==0) {//si el resto de numero dividido i es igual a cero entoces i es un divisor
 		
 		document.write(i+" es divisor </br>");
-		cantiadadDivisores=cantiadadDivisores+1;
+		cantidadDivisores=cantidadDivisores+1;
 	}
 	
 }
