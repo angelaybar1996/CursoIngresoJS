@@ -1,22 +1,23 @@
-function mostrar()
-{
+/*Angel Aybar Ejercicio 05 switch
+*/ 
+function mostrar() {
 	let hora;
 
-	hora=document.getElementById("txtIdHora").value;
-	hora=parseInt(hora);
+	hora = document.getElementById("txtIdHora").value;
+	hora = parseInt(hora);
 
-	switch (hora) {
+	switch (hora) 
+	{
 		case 7:
 		case 8:
 		case 9:
-        case 10:
+		case 10:
 		case 11:
-			alert("Es de mañana");
-			break;
-
+		alert("Es de mañana");
+	    break;
 	}
-	
-	
+
+
 
 
 

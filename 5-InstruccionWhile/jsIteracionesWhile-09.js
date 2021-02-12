@@ -12,23 +12,28 @@ function mostrar()
 
   unicaVez=0;
 
-  do {
+  do 
+  {
 
    numero=prompt("Ingrese un número:","");
    numero=parseInt(numero);
 
-   if(unicaVez==0){
+   if(unicaVez==0)
+   {
 
       maximo=numero;
       minimo=numero;
       unicaVez++;
    }
 
-   if(numero>maximo){
+   if(numero>maximo)
+   {
 
       maximo=numero;
 
-   }else if(numero<minimo){
+   }
+   else if(numero<minimo)
+   {
 
       minimo=numero;
    }

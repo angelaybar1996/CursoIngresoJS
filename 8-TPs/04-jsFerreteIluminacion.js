@@ -8,147 +8,85 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. 
 
  */
-function CalcularPrecio () 
+function CalcularPrecio() 
 {
- 	let lampara;
-    let cantidad;
+    let lampara;
     let precio;
-    let descuento;
-    let precioCantidad;
-    let impuesto;
+    let cantidad;
     let precioFinal;
+    let descuento;
+    let impuesto;
 
     precio=35;
     cantidad=document.getElementById("txtIdCantidad").value;
     cantidad=parseInt(cantidad);
-    lampara=document.getElementById("Marca").value;
+    precioFinal=precio*cantidad;
 
-    precioCantidad= precio * cantidad;
-
-    if (cantidad>5) 
+    if(cantidad>5)
     {
-        descuento=precioCantidad*50/100;
-       
-        if (precioFinal>119) 
-        {
-            impuesto=precioFinal*10/100;
-            precioFinal=precioFinal+impuesto
-
-            alert("IIBB Usted pago $"+impuesto); 
-        }        
-    } 
+    descuento=precioFinal*50/100;
+    }
     else
     {
-        if (cantidad==5)
+        if(cantidad==5)
         {
             switch (lampara)
             {
                 case "ArgentinaLuz":
-                    descuento=precioCantidad*40/100;
-                   
-                    if (precioFinal>119) 
-                    {
-                        impuesto=precioFinal*10/100;
-                        precioFinal=precioFinal+impuesto;
-     
-                        alert("IIBB Usted pago $"+impuesto);  
-                    }   
-                break; 
-                default:
-                    descuento=precioCantidad*30/100;
-                   
-                    if (precioFinal>119) 
-                    {
-                        impuesto=precioFinal*10/100;
-                        precioFinal=precioFinal+impuesto;
-    
-                        alert("IIBB Usted pago $"+impuesto);  
-                    } 
+                descuento=precioFinal*40/100;  
                 break;
-            }    
+            
+                default:
+                descuento=precioFinal*30/100;
+                break;
+            }
         }
         else
         {
-            if (cantidad==4) 
+            if(cantidad==4)
             {
-                switch (lampara)
+                switch (lampara) 
                 {
                     case "ArgentinaLuz":
                     case "FelipeLamparas":
-                        descuento=precioCantidad*25/100;
-                        
-                        if (precioFinal>119)
-                        {
-                            impuesto=precioFinal*10/100;
-                            precioFinal=precioFinal+impuesto;
-        
-                            alert("IIBB Usted pago $"+impuesto);  
-                        } 
+                    descuento=precioFinal*25/100;
                     break;
+                
                     default:
-                        descuento=precioCantidad*20/100;
-                        
-                        if (precioFinal>119)
-                        {
-                            impuesto=precioFinal*10/100;
-                            precioFinal=precioFinal+impuesto;
-        
-                            alert("IIBB Usted pago $"+impuesto);  
-                        } 
+                    descuento=precioFinal*20/100;
                     break;
                 }
-            } 
+            }
             else
             {
-                if (cantidad==3)
+                if(cantidad==3)
                 {
-                    switch (lampara)
+                    switch (lampara) 
                     {
                         case "ArgentinaLuz":
-                            descuento=precioCantidad*15/100;
-                           
-                            if (precioFinal>119)
-                            {
-                                impuesto=precioFinal*10/100;
-                                precioFinal=precioFinal+impuesto;
-            
-                                alert("IIBB Usted pago $"+impuesto);  
-                            } 
+                        descuento=precioFinal*15/100;
                         break;
+
                         case "FelipeLamparas":
-                            descuento=precioCantidad*10/100;
-                            
-                            if (precioFinal>119)
-                            {
-                                impuesto=precioFinal*10/100;
-                                precioFinal=precioFinal+impuesto;
-            
-                                alert("IIBB Usted pago $"+impuesto);  
-                            } 
+                        descuento=precioFinal*10/100;
                         break;
+                    
                         default:
-                            descuento=precioCantidad*5/100;
-                          
-                            if (precioFinal>119)
-                            {
-                                impuesto=precioFinal*10/100;
-                                precioFinal=precioFinal+impuesto;
-            
-                                alert("IIBB Usted pago $"+impuesto);
-                            }    
+                        descuento=precioFinal*5/100;
                         break;
                     }
-                    
-                }// if (cantidad==3)
+                }
+            }
+        }
+    }
 
-            } //if (cantidad==4) 
-           
-        }//if (cantidad==5) 
-        
-    }//if (cantidad>5)  
 
-    precioFinal=precioCantidad-descuento;
-
+    precioFinal=precioFinal-descuento;
+    if(precioFinal>119)
+    {
+        impuesto=precioFinal*10/100;
+        precioFinal=precioFinal+impuesto;
+        alert("IIBB Usted pagó "+impuesto+" de impuesto");
+    }
     document.getElementById("txtIdprecioDescuento").value=precioFinal;
-   
 }//FIN DE LA FUNCIÓN

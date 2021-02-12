@@ -1,10 +1,19 @@
+/*
+Angel Aybar
+Ejercicio 4 switch
+al seleccionar un mes  informar.
+si tiene 28 dias.
+si tiene 30 dias.
+si tiene 31 dias. */
 function mostrar()
 {
 	let mes;
+	let mensaje;
 
 	mes= document.getElementById("txtIdMes").value;
 
-	switch (mes) {
+	switch (mes) 
+	{
 		case "Enero":
         case "Marzo":
         case "Mayo":
@@ -12,18 +21,16 @@ function mostrar()
 		case "Agosto":
 		case "Octubre":
 		case "Diciembre":
-			alert("Este mes tiene 31 dias");
-			break;
+		mensaje="Este mes tiene 31 dias";
+		break;
 		case "Febrero":
-			alert("Este mes tiene 28 dias");
-			break;
-		case "Abril":
-        case "Junio":
-		case "Septiembre":	
-	    case "Noviembre":
-			alert("Este mes tiene 30 días");
-		    break;
+		mensaje="Este mes tiene 28 dias";
+		break;
+		default:
+		mensaje="Este mes tiene 30 días";
+		break;
 	}
+	alert(mensaje);
 	
 	
 

@@ -6,15 +6,17 @@ y una de las cuatro operaciones básicas (suma, resta,
  el resultado de la operación y presionar el botón Aceptar.
 se debe informar si el resultado es el correcto o no.
 */
-var respuesta;
+
 function comenzar()
 {
 
+    Responder();
 	
 
 }//FIN DE LA FUNCIÓN
 function Responder()
 {
-	
+	let operadorRandom;
+
 
 }//FIN DE LA FUNCIÓN

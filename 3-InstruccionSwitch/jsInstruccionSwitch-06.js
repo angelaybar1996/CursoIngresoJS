@@ -1,11 +1,13 @@
 function mostrar()
 {
 	let hora;
+	let mensaje;
 
 	hora=document.getElementById("txtIdHora").value;
 	hora=parseInt(hora);
 
-	switch (hora) {
+	switch (hora) 
+	{
         case 0:
         case 1:
         case 2:
@@ -18,14 +20,14 @@ function mostrar()
         case 22:
         case 23:
         case 24:
-			alert("Es de noche");	
+			mensaje="Es de noche";	
 			break;
 		case 7:
         case 8:
         case 9:
         case 10:
         case 11:
-			alert("Es de mañana");
+			mensaje="Es de mañana";
 			break;
         case 12:
 		case 13:
@@ -35,11 +37,12 @@ function mostrar()
 		case 17:
 		case 18:
 		case 19:
-			alert("Es de tarde");
+			mensaje="Es de tarde";
 			break;
 		default:
-			alert("La hora no existe");
+			mensaje="La hora no existe";
 			break;
 	}
+	alert(mensaje);
 
 }//FIN DE LA FUNCIÓN
