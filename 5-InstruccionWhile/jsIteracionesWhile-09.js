@@ -18,7 +18,7 @@ function mostrar()
    numero=prompt("Ingrese un número:","");
    numero=parseInt(numero);
 
-   if(unicaVez==0)
+   if(unicaVez==0)//importante para guardar datos por unica vez
    {
 
       maximo=numero;

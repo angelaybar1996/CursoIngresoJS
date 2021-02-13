@@ -20,60 +20,62 @@ function comenzar()
   
   numero=Math.random()*(maximo-minimo)+minimo;
   numeroSecreto=Math.round(numero);
+  return numeroSecreto;//1ro para pasar valores de una funcion a otra tengo que poner return para devolver valores especificos
 
-  verificar();
+ 
  
 }
 
 function verificar()
 {
-  let minimo;
-  let maximo;
+  
   let numeroIngresado;
-  let numero;
-  let numeroSecreto; 
+  let numeroFuncion;//2do tengo que declarar una variable para los valores de la funcion
   let contadorIntentos;
   let faltan;
   let sePaso;
+  let mensaje;
  
-	minimo=1;
-  maximo=100;
   contadorIntentos=0;
 
-  
-  numero=Math.random()*(maximo-minimo)+minimo;
-  
-
-	do 
-  {   
-    numeroSecreto=Math.round(numero);
-    numeroIngresado=document.getElementById("txtIdNumero").value;
-    numeroIngresado=parseInt(numeroIngresado);  
-
-    if (numeroIngresado==numeroSecreto) 
-    {
+  do 
+  {
     contadorIntentos++;
-    alert("Usted es un ganador!!! y en solo "+contadorIntentos+" intentos");
-    document.getElementById("txtIdIntentos").value=contadorIntentos;
-    } 
-    else 
+    //numeroIngresado=document.getElementById("txtIdNumero").value;
+    numeroFuncion=comenzar();//3ro tengo que asignarle los valores de la funcion a la variable
+    numeroIngresado=prompt("Ingrese un numero:");
+    numeroIngresado=parseInt(numeroIngresado);
+
+    if(numeroIngresado==numeroFuncion)
     {
-      contadorIntentos++;
-      if (numeroIngresado>numeroSecreto)
+    mensaje="Usted es un ganador!!! y en solo "+contadorIntentos+" intentos";
+    }
+    else
+    {
+      if(contadorIntentos>5)
       {
-        sePaso=numeroIngresado-numeroSecreto;
-        alert("Se paso "+sePaso+" numeros del número secreto");
+      break;
       }
       else
       {
-        if(numeroIngresado<numeroSecreto)
+        if(numeroIngresado>numeroFuncion)
         {
-        faltan=numeroSecreto-numeroIngresado;
-        alert("Le faltan "+faltan+" números para llegar al número secreto");
+        sePaso=numeroIngresado-numeroFuncion;
+        mensaje="Se paso "+sePaso+" numeros del número secreto";
+        }
+        else
+        {
+          if(numeroIngresado<numeroFuncion)
+          {
+          faltan=numeroFuncion-numeroIngresado;
+          mensaje="Le faltan "+faltan+" números para llegar al número secreto";
+          }
         }
       }
     }
-  } while (numeroIngresado!=numeroSecreto);
-  	
-}
+    alert(mensaje);
+  } while (numeroIngresado!=numeroFuncion);
 
+  document.getElementById("txtIdIntentos").value=contadorIntentos; 	
+}//FIN DE LA FUNCION
+ 

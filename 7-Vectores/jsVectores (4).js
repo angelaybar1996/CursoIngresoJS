@@ -6,7 +6,7 @@ function mostrar()
 	for (var i = 0; i <5; i++)
 	{
 		miArray[i]=parseInt(prompt("Ingrese un numero"));
-		acum+=miArray[i];
+		acum=acum+miArray[i];
 
 	}
 
