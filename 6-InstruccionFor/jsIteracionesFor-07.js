@@ -19,6 +19,6 @@ for (i = 1; i <= numero; i++) {
 	}
 	
 }
-document.write("En total hay "+cantiadadDivisores+" números divisores");
+document.write("En total hay "+cantidadDivisores+" números divisores");
 
 }//FIN DE LA FUNCIÓN

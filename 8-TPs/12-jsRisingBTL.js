@@ -32,7 +32,7 @@ function ComenzarIngreso()
 	
 		if (edad <18 || edad > 90)
 		{
-		document.getElementById("txtIdEdad").value = "no es valido";
+		edad= "no es valido";
 		}//if edad
 	
 		if (sexo == "masculino")
@@ -47,7 +47,7 @@ function ComenzarIngreso()
 			}
 			else 
 			{
-			document.getElementById("txtIdSexo").value = "no es valido";
+			sexo= "no es valido";
 			}
 		}//if sexo
 	
@@ -75,7 +75,7 @@ function ComenzarIngreso()
 					}
 					else
 					{
-					document.getElementById("txtIdEstadoCivil").value = "no es valido";
+					estado= "no es valido";
 					}
 				}
 			}
@@ -83,12 +83,12 @@ function ComenzarIngreso()
 	
 		if(sueldo<8000)
 		{
-		document.getElementById("txtIdSueldo").value = "no es valido";
+		sueldo = "no es valido";
 		}//if sueldo
 	
 		if (legajo<999 || legajo>9999) 
 		{
-		document.getElementById("txtIdLegajo").value = "no es valido";
+		legajo = "no es valido";
 		}//if legajo
 	
 		if(nacionalidad=="argentino")
@@ -109,7 +109,7 @@ function ComenzarIngreso()
 				}
 				else
 				{
-				document.getElementById("txtIdNacionalidad").value="no es valido";
+				nacionalidad="no es valido";
 				}
 			}
 		}//if nacionalidad

@@ -25,21 +25,21 @@ function verificarPalindromo ()
 
 
 	palabraIngresada=txtIdPalabra.value;
-	//console.log(palabra.legth);
+	console.log(palabraIngresada.length);
 
 	palabraSinEspacios="";
 	palabraInvertida="";
 
 	for(i=0;i<palabraIngresada.length;i++)
 	{
-		//console.log(palabraIngresada[i]);
+		console.log(palabraIngresada[i]);
 		if (palabraIngresada[i]==" ") //(palabraIngresada[i] es cada letra por separado
 		{
 			continue;//esto permite saltear las siguentes lineas si encuentra " "
 		}
 		palabraSinEspacios=palabraSinEspacios+palabraIngresada[i];
 	}
-	//console.log("sin espacios: "+palabraSinEspacios);
+	console.log("sin espacios: "+palabraSinEspacios);
 
 	for(i=0;i<palabraSinEspacios.length;i++)
 	{
