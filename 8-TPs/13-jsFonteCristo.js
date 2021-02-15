@@ -30,7 +30,7 @@ function NumerosPares()
 
     for(i;i<numero;i++)
     {
-        if(i%2==0)//si el resto de numeroIngresado dividido 2 es 0 entonces es par
+        if(i%2==0)//si el resto de i dividido 2 es 0 entonces es par
         {
         cantidadPar++;
         }
@@ -118,9 +118,20 @@ function NumerosPrimos()
 
     for(i;i<numero;i++)
     {
-       
+     if(i>1)
+     {
+       if(i%2!=0||i==2)
+       {
+           if(i%3!=0||i==3)
+           {
+            cantidadPrimos++;
+           }
+        }
+     }
+
     }
     alert(cantidadPrimos);
+   
 }//Fin Funcion Numeros primos
 
 
