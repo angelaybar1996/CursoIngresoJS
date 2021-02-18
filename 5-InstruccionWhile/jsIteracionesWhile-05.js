@@ -4,26 +4,28 @@ Al presionar el botón pedir un sexo
 function mostrar()
 {
 	let sexo;
-// En un ejercicio como este cuando nose cuantas veces se va a repetir combiene usar un while y un if
-while (true) {
 
-	sexo=prompt("Ingrese su sexo","");
+    do
+	{
+		sexo=prompt("Ingrese su sexo:");
      
-	if(sexo=="m"){
-
-	   document.getElementById("txtIdSexo").value="Masculino";
-	   break;
-
-	}else if(sexo=="f"){
-
-       document.getElementById("txtIdSexo").value="Femenino";
-	   break;
-	}else {
-
-       alert("No es valido");
-
-	}
-
-}
+		if(sexo=='m')
+		{
+		   document.getElementById("txtIdSexo").value="Masculino";
+		}
+		else
+		{
+			if(sexo=='f')
+			{
+				document.getElementById("txtIdSexo").value="Femenino";
+			}
+			else
+			{
+				alert("No es valido");
+			}
+		}
+		salir=prompt("Desea terminar:");
+		
+	}while(salir!="si");
 
 }//FIN DE LA FUNCIÓN

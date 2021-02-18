@@ -12,35 +12,31 @@ function mostrar()
 
   unicaVez=0;
 
-  do 
+  do //hacer esto
   {
+       numero=prompt("Ingrese un número:","");
+       numero=parseInt(numero);
 
-   numero=prompt("Ingrese un número:","");
-   numero=parseInt(numero);
+        if(unicaVez==0)//importante para guardar datos por unica vez
+        {
+           maximo=numero;
+           minimo=numero;
+           unicaVez++;
+        }
 
-   if(unicaVez==0)//importante para guardar datos por unica vez
-   {
-
-      maximo=numero;
-      minimo=numero;
-      unicaVez++;
-   }
-
-   if(numero>maximo)
-   {
-
-      maximo=numero;
-
-   }
-   else if(numero<minimo)
-   {
-
-      minimo=numero;
-   }
-
-   salir=prompt("Ingrese si para salir:");
-   //cuando la condicion sea verdadera termina el bucle
-  } while (salir!="si");
+        if(numero>maximo)
+        {
+           maximo=numero;
+        }
+       else
+        {
+           if(numero<minimo)
+           {
+              minimo=numero;
+           }
+        }
+   salir=prompt("Desea terminar:");
+  } while (salir!="si");//mientras salir sea distino de si,si es igual a si entonces sale del bucle
 
   document.getElementById("txtIdMaximo").value=maximo;
   document.getElementById("txtIdMinimo").value=minimo;

@@ -6,9 +6,8 @@ function mostrar()
 	let i;
 
 	i=10;
-
-	while (i>0) {
-
+	while (i>0)
+	{
 		alert(i);
 		i--;
 	}

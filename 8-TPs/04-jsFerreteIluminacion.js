@@ -24,7 +24,7 @@ function CalcularPrecio()
 
     if(cantidad>5)
     {
-    descuento=precioFinal*50/100;
+     descuento=precioFinal*50/100;
     }
     else
     {
@@ -33,7 +33,7 @@ function CalcularPrecio()
             switch (lampara)
             {
                 case "ArgentinaLuz":
-                descuento=precioFinal*40/100;  
+                   descuento=precioFinal*40/100;  
                 break;
             
                 default:

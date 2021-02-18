@@ -6,39 +6,28 @@ function mostrar()
 	let numero;
 	let acumulador;
 	let salir;
-	let sumaPositivos;
 	let productoNegativos;
 
 	acumulador=0;
 	productoNegativos=1;
 
-	while (true) {
-
-		numero=prompt("ingrese un numero:","");
+	do
+	{
+		numero=prompt("ingrese un numero:");
 		numero=parseInt(numero);
 
-		if(numero>0){
-
+		if(numero>0)
+		{
 			acumulador=acumulador+numero;
-
-		}else{
-
+		}
+		else
+		{
             productoNegativos=productoNegativos*numero;
 		}
+		salir=prompt("Desea terminar:");
+	}while(salir!="si");
 
-		salir=prompt("Si desea terminar ingrese cero, sino presione cualquier numero:","");
-		salir=parseInt(salir);
-
-		if (salir==0) {
-			
-			break;
-		}
-
-	}
-
-	sumaPositivos=acumulador;
-
-	document.getElementById("txtIdSuma").value=sumaPositivos;
+	document.getElementById("txtIdSuma").value=acumulador;
 	document.getElementById("txtIdProducto").value=productoNegativos;
 
 }//FIN DE LA FUNCIÓN
