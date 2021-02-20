@@ -1,150 +1,131 @@
 function mostrar()
 {
-let nombres;
-let edades;
-let sexo;
-let estados;
-let temperaturas;
-let mensaje;
-let i;
+	let nombre;
+	let edad;
+	let sexo;
+	let estado;
+	let temperatura;
+	let salir;
+	let i;
 
-let maximo;//variables para el punto a)
-let puntoA;
+	let maxima;
+	let nombreMaxima;
+	let contadorViudos;
+	let cantidadHombres;
+	let cantidadJubilados;
+	let acumuladorEdad;
+	let contadorSolteros;
 
-//variables para el punto b)
-//let cantidadViudos;
+	nombre=[];
+	edad=[];
+	sexo=[];
+	estado=[];
+	temperatura=[];
+	i=0;
 
-//let cantidadAmbos;//variables para el punto c)
-
-//let cantidadD;//variables para el punto d)
-
-let cantidad;
-
-let salir;
-
-nombres=[];
-edades=[];
-sexo=[];
-estados=[];
-temperaturas=[];
-
-maximo=0;
-
-//cantidadViudos=0;
-
-//cantidadAmbos=0;
-
-//cantidadD=0;
-cantidad=[];
-cantidad[0]=0;
-i=0;
-
-  do
-  {
-   nombres[i]=prompt("Ingrese nombre:");
-   edades[i]=prompt("Ingrese edad:");
-   edades[i]=parseInt(edades[i]);
-   if(edades[i]<1 || edades[i]>105)
-   {
-	mensaje="La edad no es valida";
-   }
-
-   sexo[i]=prompt("Ingrese su sexo:");
-   if(sexo[i]=="masculino")
-   {
-	sexo[i]='m';
-   }
-   else
-   {
-	   if(sexo[i]=="femenino")
-	   {
-		sexo[i]='f'
-	   }
-	   else
-	   {
-		mensaje="El sexo no es valido";
-	   }
-   }
-
-   estados[i]=prompt("Ingrese estado civil:");
-   switch(estados[i])
-   {
-	case "soltero":
-	break;
-	case "casado":
-	break;
-	case "viudo":
-	break;
-	default:
-	mensaje="El estado civil no es valido";
-	break;
-   }
-
-   temperaturas[i]=prompt("Ingrese temperatura corporal:");
-   temperaturas[i]=parseInt(temperaturas[i]);
-   if(temperaturas[i]<32 || temperaturas[i]>40)
-   {
-	mensaje="La temperatura no es valida";
-   }
-   i++;
-   alert(mensaje);
-   salir=prompt("Desea terminar?:");
-  }while (salir!="si");
-
-	for(i=0;i<temperaturas.length;i++)//Averiguar la temperatura mas alta
+	do
 	{
-	  if(maximo<temperaturas[i])
-	  {
-	  maximo=temperaturas[i];
-	  puntoA=nombres[i];//Asi determino el nombre de la persona con la temperatura mas alta
-	  }
-	}
-	alert(puntoA+" tiene la temperatura mas alta y es de "+maximo+" grados"); 
-
-	for(i=0;i<edades.length;i++)//Acá averiguo la cantidad de mayores de edad viudos
-	{
-		if(edades[i]>17)
+		nombre[i]=prompt("Ingrese nombre:");
+		do
 		{
-			if(estados[i]=="viudo")
+			edad[i]=prompt("Ingrese edad:");
+		    edad[i]=parseInt(edad[i]);
+		    if(edad[i]<1)
+		    {
+			  alert("La edad no es valida");
+		    }
+		}while(edad[i]<1);
+		do
+		{
+			sexo[i]=prompt("Ingrese sexo (f o m):");
+			if(sexo[i]!="m"&&sexo[i]!="f")
 			{
-				cantidad[0]=cantidad[0]+1;
-			//cantidadViudos++;
-			//fijarme si puedo haccer una variable cantidad vector para todas
-			//las cantidades que tengo que averiguar;
+				alert("El sexo no es valido");
 			}
-		} 
-	}
-	alert("En total hay "+cantidad[0]+/*+cantidadViudos+"*/ "viudos mayores de edad");
-
-	/*for(i=0;i<estados.length;i++)
-	{
-		if(estados[i]=="viudo"||estados[i]=="soltero")
+		}while(sexo[i]!="m"&&sexo[i]!="f");
+		do
 		{
-        //cantidadAmbos++;
+			estado[i]=prompt("Ingrese su estado civil:");
+			if(estado[i]!="soltero"&&estado[i]!="casado"&&estado[i]!="viudo")
+			{
+				alert("El estado no es valido");
+			}
+		}while(estado[i]!="soltero"&&estado[i]!="casado"&&estado[i]!="viudo");
+		do
+		{
+			temperatura[i]=prompt("Ingrese temperatura:");
+			temperatura[i]=parseInt(temperatura[i]);
+			if(temperatura[i]<33&&temperatura[i]>42)
+			{
+				alert("La temperatura no es valida");
+			}
+		}while(temperatura[i]<33&&temperatura[i]>42)
+		salir=prompt("Desea terminar?");
+		i++;
+	}while(salir!="si");
+
+	maxima=0;
+	for(i=0;i<temperatura.length;i++)
+	{
+		if(temperatura[i]>maxima)
+		{
+			maxima=temperatura[i];
+			nombreMaxima=nombre[i];
 		}
 	}
-	alert("En total son "/*+cantidadAmbos+"*/ //solteros o viudos");
+	alert("La persona con mayor temperatura se llama "+nombreMaxima+" y tiene "+maxima+" grados");
 
-    /*edadMayor=0;
-	for(i=0;i<edades.length;i++)
+	contadorViudos=0;
+	for(i=0;i<edad.length;i++)
 	{
-		if(edadMayor<edades[i])
+		if(edad[i]>17)
 		{
-			edadMayor=edades[i];
-			if(edadMayor>60)
+			if(estado[i]=="viudo")
 			{
-				if(temperaturas[i]>38)
-				{
-					//cantidadD++;
-				}
+				contadorViudos++;
 			}
 		}
 	}
-	alert("En total hay "/*+cantidadD+*//*" personas de la tercera edad con temperaturas superiores a los 38°C");*/
-}
+	alert("En total hay "+contadorViudos+" viudos en el avión");
 
+	cantidadHombres=0;
+	for(i=0;i<sexo.length;i++)
+	{
+		if(sexo[i]=="m")
+		{
+			if(estado[i]=="soltero"||estado[i]=="viudo")
+			{
+				cantidadHombres++;
+			}
+		}
+	}
+	alert("La cantidad de hombres solteros o viudos es de "+cantidadHombres);
 
+	cantidadJubilados=0;
+	for(i=0;i<edad.length;i++)
+	{
+		if(edad[i]>60)
+		{
+			if(temperatura[i]>38)
+			{
+				cantidadJubilados++;
+			}
+		}
+	}
+	alert("En total hay "+cantidadJubilados+" personas de la tercera edad con temperaturas mayores a 38°");
 
+	acumuladorEdad=0;
+	contadorSolteros=0;
+	for(i=0;i<estado.length;i++)
+	{
+		if(estado=="soltero")
+		{
+			acumuladorEdad=acumuladorEdad+edad[i];
+			contadorSolteros++;
+		}
+	}
+	promedio=acumuladorEdad/contadorSolteros;
+    alert("La edad promedio de los hombres solteros es "+promedio);
 
-  
+}//FIN DE LA FUNCIÓN
 

@@ -22,3 +22,16 @@ function mostrar()
 	}while(clave!="utn750");
 	
 }//FIN DE LA FUNCIÓN
+
+/*
+ let clave;
+  
+ clave =prompt ("Ingrese clave:");
+
+ while(clave!="utn750")
+ {
+	clave= prompt ("Ingrese clave:");
+ }
+
+ alert("La clave es correcta");
+ */

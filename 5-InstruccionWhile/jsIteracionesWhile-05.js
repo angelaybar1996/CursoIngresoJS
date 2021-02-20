@@ -1,4 +1,4 @@
-/*
+/* Angel Aybar Ejercicio 05
 Al presionar el botón pedir un sexo
 'f' para femenino, 'm' para masculino.*/
 function mostrar()
@@ -29,3 +29,21 @@ function mostrar()
 	}while(salir!="si");
 
 }//FIN DE LA FUNCIÓN
+
+let sexo;
+
+do
+{
+	sexo=prompt("Ingrese su sexo:");
+
+}while(sexo!="f"|| sexo!="m");
+
+
+let sexo;
+
+sexo=prompt("Ingrese su sexo:");
+
+while(sexo!="f"&& sexo!="m")
+{
+	sexo=prompt("Incorrecto,ingrese su sexo:");
+}

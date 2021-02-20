@@ -1,4 +1,3 @@
-
 function mostrar()
 {
 	let tipo;
@@ -6,117 +5,184 @@ function mostrar()
 	let cantidad;
 	let marca;
 	let fabricante;
-
-	let cantidadBarbijo;
-	let cantidadJabon;
-	let cantidadAlcohol;
-
-	let acumuladorBarbijo;
-	let acumuladorJabon;
-	let acumuladorAlcohol;
-
-	let promedio;
 	let i;
+
+	let barato;//punto A
+	let unicaVez;//punto A
+	let a;// punto A
+	let b;// punto A
+	let contadorTipo;
+	let acumuladorPrecio;
+	let acumuladorUnidades;
+	let mayorUnidades;//punto B
+	let promedio;//punto B
+	let nombreTipo;// punto B
+	let c;//punto B
+	let d;//punto B
+	let jabones;//punto C
+
+	tipo=[];
+	precio=[];
+	cantidad=[];
+	marca=["espadol","johnsons","nivea","dove","lux"];
+	fabricante=["unilever","PyG","palmolive","porta","pharma"];
 	
-	cantidadBarbijo=0;
-	cantidadJabon=0;
-	cantidadAlcohol=0;
-
-	acumuladorBarbijo=0;
-	acumuladorJabon=0;
-	acumuladorAlcohol=0;
-
-    i=0;
-	for(i;i<4;i++)
+	contadorTipo=[0,0,0];
+	acumuladorPrecio=[0,0,0];
+	acumuladorUnidades=[0,0,0];
+	i=0;
+	while(i<5)
 	{
-		tipo=prompt("Ingrese el produto:");
-		precio=prompt("Ingrese precio:");
-		precio=parseFloat(precio);
-		cantidad=prompt("Ingrese la cantidad:");
-		cantidad=parseInt(cantidad);
-
-		if (cantidad>0 && cantidad<1001)
+		do
 		{
-		    if(precio>99 && precio<301)
-		    {
-				switch(tipo)
+			tipo[i]=prompt("Ingrese un produto de prevencion de contagio:");
+			switch(tipo[i])
+			{
+				case "barbijo":
+				   contadorTipo[0]=contadorTipo[0]+1;
+				break;
+				case "jabon":
+					contadorTipo[1]=contadorTipo[1]+1;
+				break;
+				case "alcohol":
+					contadorTipo[2]=contadorTipo[2]+1;
+				break;
+				default:
+					alert("El producto no es valido");
+				break; 
+			}
+		}while(tipo[i]!="barbijo"&&tipo[i]!="jabon"&&tipo[i]!="alcohol");//Validado
+		do
+		{
+			precio[i]=prompt("Ingrese el precio por unidad:");
+			precio[i]=parseFloat(precio[i]);
+			if(precio[i]>99&&precio[i]<301)
+			{
+				if(tipo[i]=="barbijo")
 				{
-					case "barbijo":
-					marca="Johnson";
-					fabricante="Unilever";
-					cantidadBarbijo=cantidadBarbijo+cantidad;
-					acumuladorBarbijo=acumuladorBarbijo+precio;
-					break;
-					case "jabon":
-					marca="Johnson";
-					fabricante="Unilever";
-					cantidadJabon=cantidadJabon+cantidad;
-					acumuladorJabon=acumuladorJabon+precio;
-					break;
-					case "alcohol":
-						if(precio<150)
-						{
-						marca="Johnson";
-						fabricante="Unilever";
-						cantidadAlcohol=cantidadAlcohol+cantidad;
-						acumuladorAlcohol=acumuladorAlcohol+precio;
-						}
-						else
-						{
-							if(precio>250)
-							{
-							marca="Bialcohol";
-						    fabricante="PyG";
-						    cantidadAlcohol=cantidadAlcohol+cantidad;
-						    acumuladorAlcohol=acumuladorAlcohol+precio;
-							}
-							else
-							{
-							marca="Espadol";
-							fabricante="jsyjs";
-							cantidadAlcohol=cantidadAlcohol+cantidad;
-							acumuladorAlcohol=acumuladorAlcohol+precio;
-							}
-						}
-					
-					break;
-					default:
-					alert("No es valido");
-					break;
+					acumuladorPrecio[0]=acumuladorPrecio[0]+precio[i];
 				}
-		    }
-		    else
-		    {
-		    alert("No es valido");
-		    }
-		}
-		else
+				else
+				{
+					if(tipo[i]=="jabon")
+					{
+						acumuladorPrecio[1]=acumuladorPrecio[1]+precio[i];
+					}
+					else
+					{
+						if(tipo[i]=="alcohol")
+						{
+							acumuladorPrecio[2]=acumuladorPrecio[2]+precio[i];
+						}
+					}
+				}
+			}
+			else
+			{
+				alert("El precio no es valido");
+			}
+		}while(precio[i]<100 || precio[i]>300);//Validado
+		do
 		{
-		alert("No es valido");
-		}
+			cantidad[i]=prompt("Ingrese la cantidad:");
+			cantidad[i]=parseInt(cantidad[i]);
+			if(cantidad[i]>0&&cantidad[i]<1001)
+			{
+				if(tipo[i]=="barbijo")
+				{
+					acumuladorUnidades[0]=acumuladorUnidades[0]+cantidad[i];
+				}
+				else
+				{
+					if(tipo[i]=="jabon")
+					{
+						acumuladorUnidades[1]=acumuladorUnidades[1]+cantidad[i];
+					}
+					else
+					{
+						if(tipo[i]=="alcohol")
+						{
+							acumuladorUnidades[2]=acumuladorUnidades[2]+cantidad[i];
+						}
+					}
+				}
+			}
+			else
+			{
+				alert("La cantidad no es valida");
+			}
+		}while(cantidad[i]<0||cantidad[i]>1000);//Validado
+    	i++;
 	}
-	
-	alert("La cantidad de alcohol mas barato es de "+cantidadAlcohol+" del fabricante "+fabricante);
 
-	if(cantidadBarbijo>cantidadJabon||cantidadBarbijo>cantidadAlcohol)
+	barato=0;
+	unicaVez=0;
+	for(i=0;i<tipo.length;i++)
 	{
-	promedio=cantidadBarbijo/acumuladorBarbijo;
-	mensaje="El promedio de compra de barbijos es de $"+promedio.toFixed(2)+" c/u";
-	}
-	else
-	{
-		if(cantidadJabon>cantidadAlcohol)
+		if(tipo[i]=="alcohol")
 		{
-		promedio=cantidadJabon/acumuladorJabon;
-        mensaje="El promedio de compra de jabones es de $"+promedio.toFixed(2)+" c/u";
+			if(unicaVez==0)
+			{
+				barato=precio[i];
+				unicaVez++;
+			} 
+            if(barato>=precio[i])
+		    {
+				barato=precio[i];
+				b=fabricante[i];
+				a=cantidad[i];
+		    }  
 		}
-		else
-		{
-		promedio=cantidadAlcohol/acumuladorAlcohol;
-        mensaje="El promedio de compra de alcoholes es de $"+promedio.toFixed(2)+ "c/u";	
-		}	
 	}
-	alert(mensaje);
-	alert("En total hay "+cantidadJabon+" unidades de jabones");
+	alert("Del alcohol mas barato el fabricante es "+b+" y la cantidad es "+a);
+
+	mayorUnidades=0;
+	for(i=0;i<acumuladorUnidades.length;i++)
+	{
+		if(mayorUnidades<acumuladorUnidades[i])
+		{
+			mayorUnidades=acumuladorUnidades[i];
+			if(acumuladorUnidades[i]==acumuladorUnidades[0])
+			{
+				nombreTipo="barbijo";
+				c=acumuladorPrecio[0];
+				d=contadorTipo[0];
+			}
+			else
+			{
+				if(acumuladorUnidades[i]==acumuladorUnidades[1])
+				{
+					nombreTipo="jabon";
+					c=acumuladorPrecio[1];
+				    d=contadorTipo[1];
+				}
+				else
+				{
+					nombreTipo="alcohol";
+					c=acumuladorPrecio[2];
+				    d=contadorTipo[2];
+				}
+			}
+		}
+	}
+	promedio=c/d;
+	alert("El promedio de compra del "+nombreTipo+" es "+promedio);
+
+	for(i=0;i<tipo.length;i++)
+	{
+		if(tipo[i]=="jabon")
+		{
+			jabones=acumuladorUnidades[1];
+		}
+	}
+	alert("En total hay "+jabones+" jabones");
+
+	
+
+
+	
+
+	
+
 
 }
