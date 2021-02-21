@@ -159,9 +159,4 @@ function mostrar()
   }
   alert("El tipo mas caro es "+nombreTipo);
 
-
-
- 
-
-
 }//FIN DE LA FUNCIÓN
