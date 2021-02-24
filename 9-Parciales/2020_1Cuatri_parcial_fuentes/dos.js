@@ -1,162 +1,125 @@
 function mostrar()
 {
+
   let tipo;
   let cantidad;
   let precio;
-  let i;
-  
-  let descuento;
-  let acumuladorCantidad;
-  let acumuladorPrecio;
-  let precioFinal;
-  let maximo;
-  let cantidadTotalTipo;
-  let nombreTipo;
-  let precioTotalTipo;
+  let acumuladorBolsas;
+  let acumuladorPrecios;
+  let porcentaje;
+  let precioDescuento;
+  let acumuladorCemento;
+  let acumuladorCal;
+  let acumuladorArena;
+  let mayorTipo;
+  let bandera;
   let masCaro;
+  let nombreMasCaro;
 
-  tipo=[];
-  cantidad=[];
-  precio=[];
-  i=0;
-  acumuladorCantidad=0;
-  acumuladorPrecio=0;
-  cantidadTotalTipo=[0,0,0];
-  precioTotalTipo=[0,0,0];
+  acumuladorBolsas=0;
+  acumuladorPrecios=0;
+  acumuladorCemento=0;
+  acumuladorCal=0;
+  acumuladorArena=0;
+  bandera=0;
+
+
+
 
   do
   {
-    do
+	  tipo=prompt("Ingrese tipo:");
+	  while(isNaN(tipo)==false||tipo!="cemento"&&tipo!="cal"&&tipo!="arena")
+	  {
+		  tipo=prompt("Error,ingrese tipo:");
+	  }
+
+	  precio=prompt("Ingrese precio:");
+	  precio=parseInt(precio);
+	  while(isNaN(precio)==true||precio<0)
+	  {
+		  precio=prompt("Error,ingrese precio:");
+	  }
+	
+	  cantidad=prompt("Ingrese cantidad de unidades:");
+	  cantidad=parseInt(cantidad);
+	  while(isNaN(cantidad)==true||cantidad<0)
+	  {
+		  cantidad=prompt("Error,ingrese cantidad de unidades:");
+	  }
+
+    acumuladorBolsas=acumuladorBolsas+cantidad;
+    acumuladorPrecios=acumuladorPrecios+precio;
+
+    switch(tipo)
     {
-      tipo[i]=prompt("Ingrese producto:");
-      switch(tipo[i])
-      {
-        case "arena":
-        case "cemento":
-        case "cal":
-        break;
-        default:
-          alert("el producto no es valido");
-        break;
-      }
-    }while(tipo[i]!="arena"&&tipo[i]!="cemento"&&tipo[i]!="cal");//validado el tipo
-    do
+      case "arena":
+        acumuladorArena=acumuladorArena+cantidad;
+      break;
+      case "cemento":
+        acumuladorCemento=acumuladorCemento+cantidad;
+      break;
+      case "cal":
+        acumuladorCal=acumuladorCal+cantidad;
+      break;
+    }
+
+    if(bandera==0)
     {
-      cantidad[i]=prompt("ingrese cantidad de bolsas:");
-      cantidad[i]=parseInt(cantidad[i]);
-      precio[i]=prompt("Ingrese precio:");
-      precio[i]=parseFloat(precio[i]);
-      
-      if(tipo[i]=="arena")
+      masCaro=precio;
+      nombreMasCaro=tipo;
+      bandera++;
+    }
+    else
+    {
+      if(precio>masCaro)
       {
-        cantidadTotalTipo[0]=cantidadTotalTipo[0]+cantidad[i];
-        precioTotalTipo[0]=precioTotalTipo[0]+precio[i];
+        masCaro=precio;
+        nombreMasCaro=tipo;
       }
-      else
-      {
-        if(tipo[i]=="cemento")
-        {
-          cantidadTotalTipo[1]=cantidadTotalTipo[1]+cantidad[i];
-          precioTotalTipo[1]=precioTotalTipo[1]+precio[i];
-        }
-        else
-        {
-          if(tipo[i]=="cal")
-          {
-            cantidadTotalTipo[2]=cantidadTotalTipo[2]+cantidad[i];
-            precioTotalTipo[2]=precioTotalTipo[2]+precio[i];
-          }
-        }
-      }
-      if(cantidad[i]<0 && precio[i]<0)
-      {
-        alert("la cantidad no es valida");
-      }
-      acumuladorCantidad=acumuladorCantidad+cantidad[i];//con este averiguo la cantidad total
-      acumuladorPrecio=acumuladorPrecio+precio[i];//con este averiguo el precio total
-    }while(cantidad[i]<0&&precio[i]<0)
-    i++
+    }
+
     salir=prompt("Desea salir?");
-    
-  }while(salir!="si");//validado precio y cantidad
+  }while(salir!="si");
 
-  if(acumuladorCantidad>10)
+  if(acumuladorBolsas>10)
   {
-    descuento=acumuladorPrecio*15/100;
-    precioFinal=acumuladorPrecio-descuento;
-    alert("El total a pagar es de "+precioFinal);
-  } 
-
-  if(acumuladorCantidad>30)
+      porcentaje=acumuladorPrecios*15/100;
+  }
+  else
   {
-    descuento=acumuladorPrecio*25/100;
-    precioFinal=acumuladorPrecio-descuento;
-    alert("El total a pagar es de "+precioFinal);
-  } 
-
-  alert("El importe total a pagar es "+acumuladorPrecio);//punto A
-
-  maximo=0
-  for(i=0;i<cantidadTotalTipo.length;i++)
-  {
-    if(maximo<cantidadTotalTipo[i])
+    if(acumuladorBolsas>30)
     {
-      maximo=cantidadTotalTipo[i];
-      if(cantidadTotalTipo[i]==cantidadTotalTipo[0])
-      {
-        nombreTipo="arena";
-      }
-      else
-      {
-        if(cantidadTotalTipo[i]==cantidadTotalTipo[1])
-        {
-          nombreTipo="cemento";
-        }
-        else
-        {
-          if(cantidadTotalTipo[i]==cantidadTotalTipo[2])
-          {
-            nombreTipo="cal";
-          }
-        }
-      }
+      porcentaje=acumuladorBolsas*30/100;
     }
   }
-  alert("El producto "+nombreTipo+" tiene mayor cantidad de bolsas, "+maximo+" en total");
-
-  masCaro=0;
-  unicaVez=0;
-  for(i=0;i<precioTotalTipo.length;i++)
+  if(acumuladorBolsas>10)
   {
-    if(unicaVez==0)
-    {
-      masCaro=precioTotalTipo[i];
-      unicaVez++;
-    }
+    precioDescuento=acumuladorPrecios-porcentaje;
+    alert("El precio total con descuento es "+precioDescuento);
+  }
 
-    if(precioTotalTipo[i]>=masCaro)
+  if(acumuladorCal>acumuladorCemento&&acumuladorCal>acumuladorArena)
+  {
+    mayorTipo="Cal";
+  }
+  else
+  {
+    if(acumuladorCemento>acumuladorArena)
     {
-      masCaro=precioTotalTipo[i];
-      if(precioTotalTipo[i]==precioTotalTipo[0])
-      {
-        nombreTipo="arena";
-      }
-      else
-      {
-        if(precioTotalTipo[i]==precioTotalTipo[1])
-        {
-          nombreTipo="cemento";
-        }
-        else
-        {
-          if(precioTotalTipo[i]==precioTotalTipo[2])
-          {
-            nombreTipo="cal";
-          }
-        }
-      }
+      mayorTipo="Cemento";
+    }
+    else
+    {
+      mayorTipo="Arena";
     }
   }
-  alert("El tipo mas caro es "+nombreTipo);
+
+  alert("El tipo con mas cantidad de bolsas es "+mayorTipo);
+  alert("El tipo mas caro es "+nombreMasCaro+" y cuesta $"+masCaro);
+  
+
+
+
 
 }//FIN DE LA FUNCIÓN
