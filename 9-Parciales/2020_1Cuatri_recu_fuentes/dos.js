@@ -1,137 +1,37 @@
+/*Realizar el algoritmo que permita ingresar los datos de una compra de productos de la construccion, hasta que el cliente quiera:
+Tipo validad("arena";"cal";"cemento")
+Cantidad de bolsas,
+Precio por bolsa (más de cero ),
+al terminar la compra el cliente accede a un descuento segun las bolsas en total
+Si compro más de 10 bolsas en total tenes 15% de descuento sobre el total a pagar.
+Si compro más de 30 bolsas en total tenes 25% de descuento sobre el total a pagar.
+a) El importe total a pagar , bruto sin descuento y...
+b) el importe total a pagar con descuento(solo si corresponde)
+d) Informar el tipo ("arena";"cal";"cemento") con mas cantidad de bolsas en el total de la compra.
+f) El tipo mas caro
+ */
 function mostrar()
 {
-
-  let tipo;
-  let cantidad;
-  let precio;
-  let salir;
-  let porcentaje;
-  let acumuladorBolsas;
-  let acumuladorPrecios;
-  let precioFinal;
-  let acumuladorArena;
-  let acumuladorCal;
-  let acumuladorCemento;
-  let maximaCantidad;
-  let maximoTipo;
-  let acumuladorPrecioArena;
-  let acumuladorPrecioCemento;
-  let acumuladorPrecioCal;
-  let maximo;
-
-  acumuladorBolsas=0;
-  acumuladorPrecios=0;
-  porcentaje=0;
-  acumuladorArena=0;
-  acumuladorCemento=0;
-  acumuladorCal=0;
-  acumuladorPrecioArena=0;
-  acumuladorPrecioCemento=0;
-  acumuladorPrecioCal=0;
-
-  do
-  {
-    do
-    {
-      tipo=prompt("Ingrese tipo de producto:");
-      if(tipo!="arena"&&tipo!="cemento"&&tipo!="cal")
-      {
-        alert("Producto no válido");
-      }
-    }while(tipo!="arena"&&tipo!="cemento"&&tipo!="cal")
-    do
-    {
-      cantidad=prompt("Ingrese cantidad de bolsas");
-      cantidad=parseInt(cantidad);
-      precio=prompt("Ingrese el precio por bolsa");
-      precio=parseFloat(precio);
-      if(cantidad<1&&precio<1)
-      {
-        alert("Error, reingrese los datos");
-      }
-    }while(cantidad<1&&precio<1);
-    
-    acumuladorBolsas=acumuladorBolsas+cantidad;
-    acumuladorPrecios=acumuladorPrecios+precio;
-
-    if(tipo=="arena")
-    {
-      acumuladorArena=acumuladorArena+cantidad;
-      acumuladorPrecioArena=acumuladorPrecioArena+precio;
-    }
-    else
-    {
-      if(tipo=="cemento")
-      {
-        acumuladorCemento=acumuladorCemento+cantidad;
-        acumuladorPrecioCemento=acumuladorPrecioCemento+precio;
-      }
-      else
-      {
-        if(tipo=="cal")
-        {
-          acumuladorCal=acumuladorCal+cantidad;
-          acumuladorPrecioCal=acumuladorPrecioCal+precio;
-        }
-      }
-    }
-
-    salir=prompt("Desea salir?");
-  }while(salir!="si");
-
-  if(acumuladorBolsas>10)
-  {
-    porcentaje=acumuladorPrecios*15/100;
-  }
-  else
-  {
-    if(acumuladorBolsas>30)
-    {
-      porcentaje=acumuladorPrecios*25/100;
-    }
-  }
-  precioFinal=acumuladorPrecios-porcentaje;
-  if(porcentaje!=0)
-  {
-    alert("El importe final con descuento es $"+precioFinal);
-  }
-  if(acumuladorArena>acumuladorCemento&&acumuladorArena>acumuladorCal)
-  {
-    maximaCantidad=acumuladorArena;
-    maximoTipo="arena";
-  }
-  else
-  {
-    if(acumuladorCemento>acumuladorCal)
-    {
-      maximaCantidad=acumuladorCemento;
-      maximoTipo="cemento";
-    }
-    else
-    {
-      maximaCantidad=acumuladorCal;
-      maximoTipo="Cal";
-    }
-  }
-  if(acumuladorPrecioArena>acumuladorPrecioCemento&&acumuladorPrecioArena>acumuladorCal)
-  {
-    maximo="arena";
-  }
-  else
-  {
-    if(acumuladorPrecioCemento>acumuladorPrecioCal)
-    {
-      maximo="cemento";
-    }
-    else
-    {
-      maximo="cal";
-    }
-  }
+  
 
 
-alert("El importe total bruto sin descuento es $"+acumuladorPrecios);
-alert("El tipo con mayor cantidad de bolsas es "+maximoTipo+" y tiene "+maximaCantidad+" bolsas");
-alert("El tipo de producto mas caro es "+maximo);
+  
 }//FIN DE LA FUNCIÓN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
