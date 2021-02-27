@@ -10,7 +10,267 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio() 
 {
-    let lampara;
+    let precio;
+    let cantidad;
+    let marca;
+    let precioDescuento;
+    let porcentaje;
+    let precioTotal;
+    let impuesto;
+
+
+    precio=35;
+    cantidad=document.getElementById("txtIdCantidad").value;
+    cantidad=parseInt(cantidad);
+    marca=document.getElementById("Marca").value;
+
+    precioTotal=precio*cantidad;
+
+    switch(cantidad)
+    {
+        case 3:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje=precioTotal*15/100;
+                break;
+                case "FelipeLamparas":
+                    porcentaje=precioTotal*10/100;
+                break;
+                default:
+                    porcentaje=precioTotal*5/100;
+                break;
+            } 
+        break;
+        case 4:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    porcentaje=precioTotal*25/100;
+                break;
+                default:
+                    porcentaje=precioTotal*20/100;
+                break;
+            } 
+        break;
+        case 5:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje=precioTotal*40/100;
+                break;
+                default:
+                    porcentaje=precioTotal*30/100;
+                break;
+            }
+        break;
+        default:
+            if(cantidad>6)
+            {
+                porcentaje=precioTotal*50/100;
+            }
+        break;    
+    }
+
+    precioDescuento=precioTotal-porcentaje;
+
+    if(precioDescuento>120)
+    {
+        impuesto=precioTotal*10/100;
+        precioDescuento=(precioTotal-porcentaje)+impuesto;
+        alert("Usted pago "+impuesto+" de IIBB");
+    }
+
+    document.getElementById("txtIdprecioDescuento").value=precioDescuento;
+
+
+
+}//FIN DE LA FUNCIÓN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*let lampara;
     let precio;
     let cantidad;
     let precioFinal;
@@ -88,5 +348,4 @@ function CalcularPrecio()
         precioFinal=precioFinal+impuesto;
         alert("IIBB Usted pagó "+impuesto+" de impuesto");
     }
-    document.getElementById("txtIdprecioDescuento").value=precioFinal;
-}//FIN DE LA FUNCIÓN
+    document.getElementById("txtIdprecioDescuento").value=precioFinal;*/

@@ -10,35 +10,32 @@ b) Del tipo de producto con más unidades en total de la compra, el promedio por
 c) Cuántas unidades de Barbijos se compraron en total*/
 function mostrar()
 {
-	let tipo;
+    let i;
+    let tipo;
     let precio;
     let cantidad;
     let marca;
     let fabricante;
-    let i;
-    let acumuladorBarbijo;
+    let banderaJabon;
+    let unidadesJabon;
+    let fabricanteJabon;
+    let masCaroJabon;
     let acumuladorJabon;
     let acumuladorAlcohol;
+    let acumuladorBarbijo;
     let contadorBarbijo;
     let contadorJabon;
     let contadorAlcohol;
-    let banderaJabon;
-    let precioMasCaro;
-    let mayorUnidades;
-    let fabricanteJabon;
     let promedioCompra;
-    
 
     i=0;
     banderaJabon=0;
-    acumuladorBarbijo=0;
     acumuladorJabon=0;
     acumuladorAlcohol=0;
+    acumuladorBarbijo=0;
     contadorBarbijo=0;
     contadorJabon=0;
     contadorAlcohol=0;
-
-
 
     while(i<5)
     {
@@ -74,22 +71,20 @@ function mostrar()
             fabricante=prompt("Error,ingrese fabricante:");
         }
 
-        if(tipo=="jabon")
+        if(banderaJabon==0)
         {
-            if(banderaJabon==0)
+            unidadesJabon=cantidad;
+            fabricanteJabon=fabricante;
+            masCaroJabon=precio;
+            banderaJabon++;
+        }
+        else
+        {
+            if(precio>masCaroJabon)
             {
-                precioMasCaro=precio;
-                mayorUnidades=cantidad;
+                unidadesJabon=cantidad;
                 fabricanteJabon=fabricante;
-            }
-            else
-            {
-                if(precio>precioMasCaro)
-                {
-                    precioMasCaro=precio;
-                    mayorUnidades=cantidad;
-                    fabricanteJabon=fabricante; 
-                }
+                masCaroJabon=precio;
             }
         }
 
@@ -99,38 +94,42 @@ function mostrar()
                 acumuladorAlcohol=acumuladorAlcohol+cantidad;
                 contadorAlcohol++;
             break;
-            case "jabon":
-                acumuladorJabon=acumuladorJabon+cantidad;
-                contadorJabon++;
-            break;
             case "barbijo":
                 acumuladorBarbijo=acumuladorBarbijo+cantidad;
                 contadorBarbijo++;
+            break;
+            case "jabon":
+                acumuladorJabon=acumuladorJabon+cantidad;
+                contadorJabon++;
             break;
         }
 
         i++;
     }
-
-    if(acumuladorAlcohol>acumuladorJabon&&acumuladorAlcohol>acumuladorBarbijo)
+ 
+    if(acumuladorJabon>acumuladorBarbijo&&acumuladorJabon>acumuladorAlcohol)
     {
-        promedioCompra=acumuladorAlcohol/contadorAlcohol;
+        promedioCompra=acumuladorJabon/contadorJabon;
     }
     else
     {
-        if(acumuladorJabon>acumuladorBarbijo)
-        {
-            promedioCompra=acumuladorJabon/contadorJabon;
-        }
-        else
+        if(acumuladorBarbijo>acumuladorAlcohol)
         {
             promedioCompra=acumuladorBarbijo/contadorBarbijo;
         }
+        else
+        {
+            promedioCompra=acumuladorAlcohol/contadorAlcohol;
+        }
     }
 
-    alert("El jabon mas caro tiene "+mayorUnidades+" unidades y su fabricante es "+fabricanteJabon);
-    alert("El promedio de compra es "+promedioCompra.toFixed(2)+" del producto con mas unidades en total");
-    alert("En total se compraron "+acumuladorBarbijo+" barbijos ");
+    alert("Del jabon mas caro tiene "+unidadesJabon+" unidades y su fabricante es "+fabricanteJabon);
+    alert("Del tipo con mas unidades tiene un promedio compra de "+promedioCompra);
+    alert("En total se compraron "+acumuladorBarbijo);
+
+
+
+
 	
 } //FIN DE LA FUNCIÓN
 

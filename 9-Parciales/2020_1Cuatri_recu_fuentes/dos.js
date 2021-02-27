@@ -12,121 +12,124 @@ f) El tipo mas caro
  */
 function mostrar()
 {
-  let tipo;
-  let cantidadBolsas;
-  let precioBolsa;
-  let salir;
-  let acumuladorBolsas;
-  let acumuladorPrecios;
-  let precioDescuento;
-  let porcentaje;
-  let acumuladorCal;
-  let acumuladorCemento;
-  let acumuladorArena;
-  let tipoMayorCantidad;
-  let banderaTipo;
+   let salir;
+   let tipoValidad;
+   let cantidadBolsas;
+   let precioBolsas;
+   let acumuladorBolsas;
+   let acumuladorPrecios;
+   let porcentaje;
+   let precioDescuento;
+   let acumuladorCemento;
+   let acumuladorCal;
+   let acumuladorArena;
+   let tipoMayorBolsas;
+   let banderaTipo;
 
-  acumuladorBolsas=0;
-  acumuladorPrecios=0;
-  acumuladorCal=0;
-  acumuladorCemento=0;
-  acumuladorArena=0;
-  banderaTipo=0;
+   acumuladorBolsas=0;
+   acumuladorPrecios=0;
+   acumuladorArena=0;
+   acumuladorCal=0;
+   acumuladorCemento=0;
+   banderaTipo=0;
 
 
-  do
-  {
-    tipo=prompt("Ingrese tipo:");
-    while(isNaN(tipo)==false||tipo!="cal"&&tipo!="cemento"&&tipo!="arena")
+
+   do
+   {
+           tipoValidad=prompt("Ingrese el tipo:");
+           while(isNaN(tipoValidad)==false||tipoValidad!="arena"&&tipoValidad!="cal"&&tipoValidad!="cemento")
+           {
+              tipoValidad=prompt("Error,ingrese el tipo:");
+           }
+
+           cantidadBolsas=prompt("Ingrese cantidadBolsas:");
+           cantidadBolsas=parseInt(cantidadBolsas);
+           while(isNaN(cantidadBolsas)==true||cantidadBolsas<0)
+           {       
+               cantidadBolsas=prompt("Error,ingrese cantidadBolsas:");
+           }
+
+           precioBolsas=prompt("Ingrese precioBolsas:");
+           precioBolsas=parseInt(precioBolsas);
+           while(isNaN(precioBolsas)==true||precioBolsas<0)
+           {
+              precioBolsas=prompt("Error,ingrese precioBolsas:");
+           }
+
+           acumuladorPrecios=acumuladorPrecios+precioBolsas;
+           acumuladorBolsas=acumuladorBolsas+cantidadBolsas;
+
+           switch(tipoValidad)
+           {
+             case "arena":
+            acumuladorArena=acumuladorArena+cantidadBolsas;
+              break;
+             case "cal":
+            acumuladorCal=acumuladorCal+cantidadBolsas;
+             break;
+             case "cemento":
+            acumuladorCemento=acumuladorCemento+cantidadBolsas;
+             break;
+           }
+
+           if(banderaTipo==0)
+           {
+               mayorTipo=tipoValidad;
+               precioMayorTipo=precioBolsas;
+               banderaTipo++;
+           }
+           else
+           {
+               if(precioBolsas>precioMayorTipo)
+               {
+                mayorTipo=tipoValidad;
+                precioMayorTipo=precioBolsas;
+               }
+           }
+
+      salir=prompt("Desea salir?");
+    }while(salir!="si");
+
+   if(acumuladorBolsas>10)
+   {
+       porcentaje=acumuladorPrecios*15/100;
+   }
+   else
+   {
+       if(acumuladorBolsas>30)
+       {
+           porcentaje=acumuladorPrecios*25/100;
+       }
+   }
+
+   if(acumuladorBolsas>10)
+   {
+       precioDescuento=acumuladorPrecios-porcentaje;
+       alert("El precio con descuento es "+precioDescuento);
+   }
+
+   if(acumuladorCemento>acumuladorArena&&acumuladorCemento>acumuladorCal)
     {
-      tipo=prompt("Error,ingrese tipo:");
-    }
-
-    cantidadBolsas=prompt("Ingrese cantidadBolsas:");
-    cantidadBolsas=parseInt(cantidadBolsas);
-    while(isNaN(cantidadBolsas)==true||cantidadBolsas<0)
-    {
-      cantidadBolsas=prompt("Error,ingrese cantidadBolsas:");
-    }
-
-    precioBolsa=prompt("Ingrese precioBolsa:");
-    precioBolsa=parseInt(precioBolsa);
-    while(isNaN(precioBolsa)==true||precioBolsa<0)
-    {
-      precioBolsa=prompt("Error,ingrese precioBolsa:");
-    }
-
-    acumuladorBolsas=acumuladorBolsas+cantidadBolsas;
-    acumuladorPrecios=acumuladorPrecios+precioBolsa;
-
-    switch(tipo)
-    {
-      case "cal":
-        acumuladorCal=acumuladorCal+cantidadBolsas;
-      break;
-      case "cemento":
-        acumuladorCemento=acumuladorCemento+cantidadBolsas;
-      break;
-      case "arena":
-        acumuladorArena=acumuladorArena+cantidadBolsas;
-      break;
-    }
-
-    if(banderaTipo==0)
-    {
-      tipoMasCaro=tipo;
-      precioMasCaro=precioBolsa;
-      banderaTipo++;
-    }
-    else
-    {
-      if(precioBolsa>precioMasCaro)
-      {
-        precioMasCaro=precioBolsa;
-        tipoMasCaro=tipo;
-      }
-    }
-
-    salir=prompt("Desea salir:");
-  }while(salir=!"si")
-
-  if(acumuladorBolsas>10)
-  {
-    porcentaje=acumuladorPrecios*15/100;
-  }
-  else
-  {
-    if(acumuladorBolsas>30)
-    {
-      porcentaje=acumuladorPrecios*25/100;
-    }
-  }
-
-  if(acumuladorBolsas>10)
-  {
-    precioDescuento=acumuladorPrecios-porcentaje;
-    alert("El precio con descuento es "+precioDescuento);
-  }
-
-  if(acumuladorCal>acumuladorCemento&&acumuladorCal>acumuladorArena)
-  {
-    tipoMayorCantidad="cal";
-  }
-  else
-  {
-    if(acumuladorCemento>acumuladorArena)
-    {
-      tipoMayorCantidad="cemento";
+        tipoMayorBolsas="cemento";
     }
     else
     {
-      tipoMayorCantidad="arena";
+        if(acumuladorArena>acumuladorCal)
+        {
+            tipoMayorBolsas="arena";
+        }
+        else
+        {
+            tipoMayorBolsas="cal";
+        }
     }
-  }
 
-  alert("El precio bruto es "+acumuladorPrecios);
-  alert("El tipo con mayor cantidad de bolsas en total es "+tipoMayorCantidad);
-  alert("El tipo mas caro es "+tipoMasCaro);
+   alert("El importe bruto es "+acumuladorPrecios);
+   alert("El tipo con mas unidades es "+tipoMayorBolsas);
+   alert("El tipo mas caro es "+mayorTipo);
+
+
 }//FIN DE LA FUNCIÓN
 
 
