@@ -8,46 +8,48 @@ Si compro más de 30 bolsas en total tenes 25% de descuento sobre el total a pag
 a) El importe total a pagar , bruto sin descuento y...
 b) el importe total a pagar con descuento(solo si corresponde)
 d) Informar el tipo con mas cantidad de bolsas.
-f) El tipo mas caro*/
+f) El tipo mas caro*/ 
 function mostrar()
 {
     let salir;
-    let tipo;
+    let tipoValidad;
     let cantidadBolsas;
     let precioBolsa;
-    let acumuladorPrecios;
     let acumuladorBolsas;
+    let acumuladorPrecio;
     let porcentaje;
     let precioDescuento;
-    let acumuladorCal;
     let acumuladorCemento;
+    let acumuladorCal;
     let acumuladorArena;
-    let tipoMasUnidades;
-    let banderaTipo;
-    
+    let mayorUnidades;
+    let banderaMasCaro;
+    let precioMasCaro;
+    let tipoMasCaro;
+
     acumuladorBolsas=0;
-    acumuladorPrecios=0;
-    acumuladorArena=0;
-    acumuladorCal=0;
+    acumuladorPrecio=0;
     acumuladorCemento=0;
-    banderaTipo=0;
+    acumuladorCal=0;
+    acumuladorArena=0;
+    banderaMasCaro=0;
 
     do
     {
-        tipo=prompt("Ingrese tipo:");
-        while(isNaN(tipo)==false||tipo!="arena"&&tipo!="cal"&&tipo!="cemento")
+        tipoValidad=prompt("ingrese tipoValidad:");
+        while(isNaN(tipoValidad)==false||tipoValidad!="arena"&&tipoValidad!="cal"&&tipoValidad!="cemento")
         {
-            tipo=prompt("Error,ingrese tipo:");
+            tipoValidad=prompt("Error,ingrese tipoValidad:");
         }
 
-        cantidadBolsas=prompt("Ingrese cantidadBolsas:");
+        cantidadBolsas=prompt("ingrese cantidadBolsas:");
         cantidadBolsas=parseInt(cantidadBolsas);
-        while(isNaN(cantidadBolsas)==true||cantidadBolsas<0)
+        while(isNaN(cantidadBolsas)==true||cantidadBolsas<0||cantidadBolsas>1000)
         {
             cantidadBolsas=prompt("Error,ingrese cantidadBolsas:");
         }
 
-        precioBolsa=prompt("Ingrese precioBolsa:");
+        precioBolsa=prompt("ingrese precioBolsa:");
         precioBolsa=parseInt(precioBolsa);
         while(isNaN(precioBolsa)==true||precioBolsa<0)
         {
@@ -55,79 +57,80 @@ function mostrar()
         }
 
         acumuladorBolsas=acumuladorBolsas+cantidadBolsas;
-        acumuladorPrecios=acumuladorPrecios+precioBolsa;
+        acumuladorPrecio=acumuladorPrecio+precioBolsa;
 
-        switch(tipo)
+        switch(tipoValidad)
         {
-            case "arena":
-                acumuladorArena=acumuladorArena+cantidadBolsas;
+            case "cemento":
+               
+                acumuladorCemento=acumuladorCemento+cantidadBolsas;
                 
             break;
             case "cal":
                 acumuladorCal=acumuladorCal+cantidadBolsas;
                 
             break;
-            case "cemento":
-                acumuladorCemento=acumuladorCemento+cantidadBolsas;  
+            case "arena":
+                acumuladorArena=acumuladorArena+cantidadBolsas;
+                
             break;
         }
 
-        if(banderaTipo==0)
+        if(banderaMasCaro==0)
         {
-            tipoMasCaro=tipo;
-            precioTipo=precioBolsa;
-            banderaTipo++;
+            precioMasCaro=precioBolsa;
+            tipoMasCaro=tipoValidad;
+            banderaMasCaro++;
         }
         else
         {
-            if(precioBolsa>precioTipo)
+            if(precioBolsa>precioMasCaro)
             {
-                tipoMasCaro=tipo;
-                precioTipo=precioBolsa;
+                precioMasCaro=precioBolsa;
+                tipoMasCaro=tipoValidad;
             }
         }
+
 
         salir=prompt("Desea salir?");
     }while(salir!="si");
 
     if(acumuladorBolsas>10)
     {
-        porcentaje=acumuladorPrecios*15/100;
+        porcentaje=acumuladorPrecio*15/100;
     }
     else
     {
         if(acumuladorBolsas>30)
         {
-            porcentaje=acumuladorPrecios*25/100;
+            porcentaje=acumuladorPrecio*25/100;
         }
     }
 
-    if(acumuladorArena>acumuladorCemento&&acumuladorArena>acumuladorCal)
+    if(acumuladorCemento>acumuladorCal&&acumuladorCemento>acumuladorArena)
     {
-        tipoMasUnidades="arena";
+        mayorUnidades="cemento";
     }
     else
     {
-        if(acumuladorCemento>acumuladorCal)
+        if(acumuladorCal>acumuladorArena)
         {
-            tipoMasUnidades="cemento";
+            mayorUnidades="cal";
         }
         else
         {
-            tipoMasUnidades="cal";
+            mayorUnidades="arena";
         }
     }
 
-
-    alert("El importe total a pagar es "+acumuladorPrecios);
     if(acumuladorBolsas>10)
     {
-        precioDescuento=acumuladorPrecios-porcentaje;
+        precioDescuento=acumuladorPrecio-porcentaje;
         alert("El precio con descuento es "+precioDescuento);
     }
-    alert("El tipo con  mas unidades es "+tipoMasUnidades);
+
+    alert("El importe total a pagar sin descuento es "+acumuladorPrecio);
+    alert("El tipo con mayor cantidad de unidades es "+mayorUnidades);
     alert("El tipo mas caro es "+tipoMasCaro);
 
-
- 
 }//FIN DE LA FUNCIÓN
